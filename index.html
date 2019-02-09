@@ -17,7 +17,11 @@
     </audio>
 
     <script>
-      document.getElementById("audio").play();
+      document.getElementById("audio").onloadedmetadata = () => {
+        document.getElementById("audio").currentTime = Math.round(Math.floor(Date.now() / 1000) % document.getElementById("audio").duration
+)
+        document.getElementById("audio").play();
+      }
     </script>
   </body>
 </html>
