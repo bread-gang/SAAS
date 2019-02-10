@@ -39,7 +39,7 @@
         }
         audioTag.onloadedmetadata = function() {
           const currentTime = Date.now();
-          const delta = 2000;
+          const delta = 1000;
           setTimeout(() => {
               audioTag.play();
               startAnimations();
