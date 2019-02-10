@@ -11,21 +11,20 @@
     <script src="./static/meme.js"></script>
 
   </head>
-  
+
   <body>
-    
-    <center><h1 class = "margin-top">Click Me</h1></center> 
+
+    <center><h1 class = "margin-top">Click Me</h1></center>
     <div id="art" onclick="play()">
       <center><img src="./image/maxresdefault.jpg" alt="Knuckles"  height="500" width="600"></center>
     </div>
 
+    <iframe src="./silence.mp3" allow="autoplay" id="fake" style="display:none"></iframe>
     <audio id="audio" src="./sicko_mode.mp3">
       <p>If you are reading this, it is because your browser does not support the audio element.</p>
     </audio>
 
     <script>
-
-
       function play() {
         console.log("test")
         document.getElementById("audio").src = document.getElementById("audio").src
@@ -44,7 +43,7 @@
         return new Promise((resolve) => setTimeout(resolve, time));
       }
 
-      
+      play();
     </script>
   </body>
 </html>
