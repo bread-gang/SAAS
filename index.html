@@ -7,13 +7,16 @@
     <meta name="description" content="The HTML5 Herald">
     <meta name="author" content="BreadGang">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" type="text/css" href="./static/style.css">
+    <script src="./static/meme.js"></script>
+    
   </head>
   
   <body>
     
-    <div id="art" onclick="play()">
-      <center><img src="./image/sweet_victory.jpg" alt="Knuckles"  height="500" width="900"></center>
+
+    <div id="art" class="margin-top" onclick="play()">
+      <center><img src="./image/maxresdefault.jpg" alt="Knuckles"  height="500" width="600"></center>
     </div>
 
     <audio id="audio" src="./sicko_mode.mp3">
@@ -21,6 +24,8 @@
     </audio>
 
     <script>
+
+
       function play() {
         console.log("test")
         document.getElementById("audio").src = document.getElementById("audio").src
@@ -35,7 +40,6 @@
       function sleep (time) {
         return new Promise((resolve) => setTimeout(resolve, time));
       }
-
       // Usage!
       sleep(500).then(() => {
         play()
