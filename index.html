@@ -12,20 +12,24 @@
   
   <body>
 
+    <h3>CLICK ME</h3>
     <div id="knuckles">
-      <img src="./image/knuckles.jpg" alt="Knuckles">
+      <center><img src="./image/knuckles.jpg" alt="Knuckles"></center>
     </div>
 
     <audio id="audio" src="./sicko_mode.mp3">
       <p>If you are reading this, it is because your browser does not support the audio element.     </p>
     </audio>
 
+    <button onclick="play()">test</button>
+
     <script>
-    </script>
-    <script>
-      document.getElementById("audio").onloadedmetadata = () => {
-        document.getElementById("audio").currentTime = Math.round(Math.floor(Date.now() / 1000) % document.getElementById("audio").duration)
-        document.getElementById("audio").play();
+      function play() {
+        console.log("Go")
+        document.getElementById("audio").onloadedmetadata = () => {
+          document.getElementById("audio").currentTime = Math.round(Math.floor(Date.now() / 1000) % document.getElementById("audio").duration)
+          document.getElementById("audio").play();
+        }
       }
     </script>
   </body>
