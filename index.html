@@ -6,17 +6,25 @@
     <title>SASS</title>
     <meta name="description" content="The HTML5 Herald">
     <meta name="author" content="BreadGang">
-  </head>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
+  </head>
+  
   <body>
+
+    <div id="knuckles">
+      <img src="./image/knuckles.jpg" alt="Knuckles">
+    </div>
+
     <audio id="audio" src="./sicko_mode.mp3">
       <p>If you are reading this, it is because your browser does not support the audio element.     </p>
     </audio>
 
     <script>
+    </script>
+    <script>
       document.getElementById("audio").onloadedmetadata = () => {
-        document.getElementById("audio").currentTime = Math.round(Math.floor(Date.now() / 1000) % document.getElementById("audio").duration
-)
+        document.getElementById("audio").currentTime = Math.round(Math.floor(Date.now() / 1000) % document.getElementById("audio").duration)
         document.getElementById("audio").play();
       }
     </script>
