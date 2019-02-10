@@ -28,31 +28,35 @@
     </div>
 
     <iframe src="./silence.mp3" allow="autoplay" id="fake" style="display:none"></iframe>
-    <audio id="audio" src="./sicko_mode.mp3">
+    <audio loop id="audio" src="./sicko_mode.mp3">
       <p>If you are reading this, it is because your browser does not support the audio element.</p>
     </audio>
 
     <script>
-      function play() {
+      (function() {
         $("#art2").removeClass("invisible");
         $("#art3").removeClass("invisible");
         $("#instruction").addClass("invisible");
+        window.setInterval(function(){
+            $("html").css('background-color',randomColor);
+        },200)
+        AnimateRotate(360);
+        AnimateRotate2(360);
+        AnimateRotate3(360);
+        $("#art").prop("onclick", null).off("click");
+
         let audioTag = document.getElementById("audio")
+        let duration = Math.floor(audioTag.duration)
+
+        function playTime() {
+          return Math.floor(Date.now() / 1000) % duration
+        }
         audioTag.src = audioTag.src
         audioTag.onloadedmetadata = () => {
-          audioTag.pause();
-          audioTag.currentTime = Math.floor(Date.now() / 1000) % audioTag.duration
+          audioTag.curentTime = playTime()
           audioTag.play();
-          window.setInterval(function(){
-            $("html").css('background-color',randomColor);
-          },200)
-          AnimateRotate(360);
-          AnimateRotate2(360);
-          AnimateRotate3(360);
-          $("#art").prop("onclick", null).off("click");
         }
-      }
-      //play()
+      })()
     </script>
   </body>
 </html>
