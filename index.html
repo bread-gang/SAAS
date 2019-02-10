@@ -25,7 +25,7 @@
     </audio>
 
     <script>
-      (function() {
+      $(document).ready(function() {
         let audioTag = document.getElementById("audio")
         let duration = Math.floor(audioTag.duration)
 
@@ -38,7 +38,7 @@
           audioTag.curentTime = playTime()
           audioTag.play();
         }
-      })()
+      })
     </script>
   </body>
 </html>
