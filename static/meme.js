@@ -62,3 +62,47 @@ function AnimateRotate(angle) {
 		}
 	},'linear');
 }
+
+function AnimateRotate2(angle) {
+	// caching the object for performance reasons
+	var $elem = $('#art2');
+
+	// we use a pseudo object for the animation
+	// (starts from `0` to `angle`), you can name it as you want
+	$({deg: 0}).animate({deg: angle}, {
+		duration: 300,
+		step: function(now) {
+			// in the step-callback (that is fired each step of the animation),
+			// you can use the `now` paramter which contains the current
+			// animation-position (`0` up to `angle`)
+			$elem.css({
+				transform: 'rotate(' + now + 'deg)'
+			});
+		},
+		complete: function(){
+			AnimateRotate2(360);
+		}
+	},'linear');
+}
+
+function AnimateRotate3(angle) {
+	// caching the object for performance reasons
+	var $elem = $('#art3');
+
+	// we use a pseudo object for the animation
+	// (starts from `0` to `angle`), you can name it as you want
+	$({deg: 0}).animate({deg: angle}, {
+		duration: 300,
+		step: function(now) {
+			// in the step-callback (that is fired each step of the animation),
+			// you can use the `now` paramter which contains the current
+			// animation-position (`0` up to `angle`)
+			$elem.css({
+				transform: 'rotate(' + now + 'deg)'
+			});
+		},
+		complete: function(){
+			AnimateRotate3(360);
+		}
+	},'linear');
+}
