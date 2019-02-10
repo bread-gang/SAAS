@@ -29,7 +29,7 @@
         audioTag.src = audioTag.src
         audioTag.onloadedmetadata = () => {
           audioTag.pause();
-          audioTag.currentTime = Math.floor(Date.now() / 250) % audioTag.duration
+          audioTag.currentTime = Math.floor(Date.now() / 1000) % audioTag.duration
           audioTag.play();
           window.setInterval(function(){
             $("html").css('background-color',randomColor);
