@@ -3,6 +3,4 @@
 ![Sicko Mode](image/sicko_mode.jpg)  
 
 ### What does it do?
-
-Image being in a world where Mo Bamba has been running rampant. We need to wage war. Sicko mode as a service is the weapon we need. Being able to play Sicko Mode as a service.
-
+Imagine if you wand your homie want to play sicko mode at the same time, now you can
