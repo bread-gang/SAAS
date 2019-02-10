@@ -13,21 +13,19 @@
       <p>If you are reading this, it is because your browser does not support the audio element.     </p>
     </audio>
 
-    <button onclick="play()">test</button>
+    <button onclick="play()">P L A Y</button>
 
     <script>
       function play() {
+        document.getElementById("audio").src = document.getElementById("audio").src
         document.getElementById("audio").onloadedmetadata = () => {
+          document.getElementById("audio").pause();
           document.getElementById("audio").currentTime = Math.round(Math.floor(Date.now() / 1000) % document.getElementById("audio").duration
           )
           document.getElementById("audio").play();
         }
       }
-      document.getElementById("audio").onloadedmetadata = () => {
-        document.getElementById("audio").currentTime = Math.round(Math.floor(Date.now() / 1000) % document.getElementById("audio").duration
-)
-        document.getElementById("audio").play();
-      }
+      play()
     </script>
   </body>
 </html>
