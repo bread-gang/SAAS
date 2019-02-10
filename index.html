@@ -13,10 +13,9 @@
       <p>If you are reading this, it is because your browser does not support the audio element.     </p>
     </audio>
 
-    <button onclick="play()">P L A Y</button>
-
     <script>
       function play() {
+        console.log("test")
         document.getElementById("audio").src = document.getElementById("audio").src
         document.getElementById("audio").onloadedmetadata = () => {
           document.getElementById("audio").pause();
@@ -25,7 +24,15 @@
           document.getElementById("audio").play();
         }
       }
-      play()
+      // sleep time expects milliseconds
+      function sleep (time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
+      }
+
+      // Usage!
+      sleep(500).then(() => {
+        play()
+      });
     </script>
   </body>
 </html>
