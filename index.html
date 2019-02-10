@@ -35,11 +35,6 @@
 
         audioTag.src = audioTag.src
         audioTag.onloadedmetadata = () => {
-          console.log(playTime())
-          setTimeout(() => { console.log(playTime()) }, 250)
-          setTimeout(() => { console.log(playTime()) }, 500)
-          setTimeout(() => { console.log(playTime()) }, 750)
-          setTimeout(() => { console.log(playTime()) }, 1250)
           audioTag.curentTime = playTime()
           audioTag.play();
         }
