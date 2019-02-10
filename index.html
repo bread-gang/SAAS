@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <audio id="audio" src="./sicko_mode.mp3">
+    <audio loop id="audio" src="./sicko_mode.mp3">
       <p>If you are reading this, it is because your browser does not support the audio element.     </p>
     </audio>
 
@@ -19,8 +19,7 @@
         document.getElementById("audio").src = document.getElementById("audio").src
         document.getElementById("audio").onloadedmetadata = () => {
           document.getElementById("audio").pause();
-          document.getElementById("audio").currentTime = Math.round(Math.floor(Date.now() / 1000) % document.getElementById("audio").duration
-          )
+          document.getElementById("audio").currentTime = Math.round(((Date.now() / 1000) % document.getElementById("audio").duration) * 100) / 100
           document.getElementById("audio").play();
         }
       }
@@ -30,9 +29,10 @@
       }
 
       // Usage!
-      sleep(500).then(() => {
+      sleep(1000).then(() => {
         play()
       });
+      play()
     </script>
   </body>
 </html>
