@@ -37,16 +37,7 @@
         let audioTag = document.getElementById("audio");
         audioTag.src = audioTag.src
 
-        audioTag.onloadedmetadata = function() {
-          let duration = Math.floor(audioTag.duration)
-          function playTime() {
-            return Math.floor(Date.now() / 1000) % duration
-          }
-
-          console.log(playTime())
-          audioTag.currentTime = playTime()
-          audioTag.play();
-
+        let startAnimations = function() {
           //----  Spin --------
           $("#art2").removeClass("invisible");
           $("#art3").removeClass("invisible");
@@ -59,6 +50,19 @@
           AnimateRotate3(360);
           $("#art").prop("onclick", null).off("click");
           //--- END ----
+        }
+        audioTag.onloadedmetadata = function() {
+          let duration = Math.floor(audioTag.duration);
+          let currentTime = Date.now();
+          let delta = (Math.floor(currentTime / 1000) * 1000) + (2000) - currentTime
+          let playTime = (currentTime + delta) % duration
+          audioTag.currentTime = playTime
+          setTimeout(() => {
+              audioTag.play();
+              startAnimations();
+            },
+            delta
+          );
         }
       });
     </script>
