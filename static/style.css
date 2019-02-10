@@ -3,5 +3,17 @@ html{
 }
 
 .margin-top{
-    margin-top:21%
+    margin-top:10%
+}
+
+.margin-left{
+    margin-left: 40%
+}
+
+.invisible{
+    visibility: hidden;
+}
+
+.displayed{
+    visibility: visible;
 }

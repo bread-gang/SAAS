@@ -14,9 +14,17 @@
 
   <body>
 
-    <center><h1 class = "margin-top">Click Me</h1></center>
-    <div id="art" onclick="play()">
-      <center><img src="./image/maxresdefault.jpg" alt="Knuckles"  height="500" width="600"></center>
+     
+    <div id="art" class = "margin-top" onclick="play()">
+      <center><h1 id="instruction">Click Me</h1></center>
+      <center><img src="./image/maxresdefault.jpg" alt="Travis Scotts Face"  height="500" width="600"></center>
+    </div>
+
+    <div id="art2" class="invisible">
+      <img src="./image/knuckles.jpg" alt="Knuckles"  height="100" width="100">
+    </div>
+    <div id="art3" class= "margin-left invisible"">
+        <center><img src="./image/sweet_victory.jpg" alt="Knuckles"  height="100" width="150"></center>
     </div>
 
     <iframe src="./silence.mp3" allow="autoplay" id="fake" style="display:none"></iframe>
@@ -25,20 +33,34 @@
     </audio>
 
     <script>
-      let audioTag = document.getElementById("audio");
-      audioTag.onloadedmetadata = function() {
-        let duration = Math.floor(audioTag.duration)
-
-        function playTime() {
-          return Math.floor(Date.now() / 1000) % duration
-        }
-
+      $(document).ready(function() {
+        let audioTag = document.getElementById("audio");
         audioTag.src = audioTag.src
-        audioTag.onloadedmetadata = () => {
-          audioTag.curentTime = playTime()
+
+        audioTag.onloadedmetadata = function() {
+          let duration = Math.floor(audioTag.duration)
+          function playTime() {
+            return Math.floor(Date.now() / 1000) % duration
+          }
+
+          console.log(playTime())
+          audioTag.currentTime = playTime()
           audioTag.play();
+
+          //----  Spin --------
+          $("#art2").removeClass("invisible");
+          $("#art3").removeClass("invisible");
+          $("#instruction").addClass("invisible");
+          window.setInterval(function(){
+            $("html").css('background-color',randomColor);
+          },200)
+          AnimateRotate(360);
+          AnimateRotate2(360);
+          AnimateRotate3(360);
+          $("#art").prop("onclick", null).off("click");
+          //--- END ----
         }
-      }
+      });
     </script>
   </body>
 </html>

@@ -1,6 +1,6 @@
 # SASS (Sicko Mode as a service)
 
-![Sicko Mode](image/image.jpg)  
+![Sicko Mode](image/sicko_mode.jpg)  
 
 ### What does it do?
 
