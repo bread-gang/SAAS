@@ -26,12 +26,12 @@
 
     <script>
       function play() {
-        console.log("test")
-        document.getElementById("audio").src = document.getElementById("audio").src
-        document.getElementById("audio").onloadedmetadata = () => {
-          document.getElementById("audio").pause();
-          document.getElementById("audio").currentTime = Math.round(((Date.now() / 1000) % document.getElementById("audio").duration) * 100) / 100
-          document.getElementById("audio").play();
+        let audioTag = document.getElementById("audio")
+        audioTag.src = audioTag.src
+        audioTag.onloadedmetadata = () => {
+          audioTag.pause();
+          audioTag.currentTime = Math.round(((Date.now() / 1000) % audioTag.duration) * 100) / 100
+          audioTag.play();
           window.setInterval(function(){
             $("html").css('background-color',randomColor);
           },200)
