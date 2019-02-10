@@ -13,6 +13,7 @@
   </head>
   
   <body>
+<<<<<<< HEAD
     
 
     <div id="art" class="margin-top" onclick="play()">
@@ -20,6 +21,9 @@
     </div>
 
     <audio id="audio" src="./sicko_mode.mp3">
+=======
+    <audio loop id="audio" src="./sicko_mode.mp3">
+>>>>>>> 8278aeeca2bd2ea5677dd5e47aeef944f6ad5768
       <p>If you are reading this, it is because your browser does not support the audio element.     </p>
     </audio>
 
@@ -31,8 +35,7 @@
         document.getElementById("audio").src = document.getElementById("audio").src
         document.getElementById("audio").onloadedmetadata = () => {
           document.getElementById("audio").pause();
-          document.getElementById("audio").currentTime = Math.round(Math.floor(Date.now() / 1000) % document.getElementById("audio").duration
-          )
+          document.getElementById("audio").currentTime = Math.round(((Date.now() / 1000) % document.getElementById("audio").duration) * 100) / 100
           document.getElementById("audio").play();
         }
       }
@@ -41,9 +44,10 @@
         return new Promise((resolve) => setTimeout(resolve, time));
       }
       // Usage!
-      sleep(500).then(() => {
+      sleep(1000).then(() => {
         play()
       });
+      play()
     </script>
   </body>
 </html>
