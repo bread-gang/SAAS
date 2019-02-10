@@ -20,13 +20,13 @@
     </div>
 
     <iframe src="./silence.mp3" allow="autoplay" id="fake" style="display:none"></iframe>
-    <audio loop id="audio" src="./sicko_mode.mp3">
+    <audio loop id="audio" src="./sicko_mode.mp3" preload="metadata">
       <p>If you are reading this, it is because your browser does not support the audio element.</p>
     </audio>
 
     <script>
-      (function() {
-        let audioTag = document.getElementById("audio")
+      let audioTag = document.getElementById("audio");
+      audioTag.onloadedmetadata = function() {
         let duration = Math.floor(audioTag.duration)
 
         function playTime() {
@@ -38,7 +38,7 @@
           audioTag.curentTime = playTime()
           audioTag.play();
         }
-      })()
+      }
     </script>
   </body>
 </html>
