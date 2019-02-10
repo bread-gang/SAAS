@@ -33,7 +33,7 @@
     </audio>
 
     <script>
-      (function() {
+      $(document).ready(function() {
         $("#art2").removeClass("invisible");
         $("#art3").removeClass("invisible");
         $("#instruction").addClass("invisible");
@@ -44,7 +44,7 @@
         AnimateRotate2(360);
         AnimateRotate3(360);
         $("#art").prop("onclick", null).off("click");
-
+        
         let audioTag = document.getElementById("audio")
         let duration = Math.floor(audioTag.duration)
 
@@ -56,7 +56,7 @@
           audioTag.curentTime = playTime()
           audioTag.play();
         }
-      })()
+      })
     </script>
   </body>
 </html>
