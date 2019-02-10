@@ -9,21 +9,17 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="./static/style.css">
     <script src="./static/meme.js"></script>
-    
+
   </head>
   
   <body>
-<<<<<<< HEAD
     
-
-    <div id="art" class="margin-top" onclick="play()">
+    <center><h1 class = "margin-top">Click Me</h1></center> 
+    <div id="art" onclick="play()">
       <center><img src="./image/maxresdefault.jpg" alt="Knuckles"  height="500" width="600"></center>
     </div>
 
     <audio id="audio" src="./sicko_mode.mp3">
-=======
-    <audio loop id="audio" src="./sicko_mode.mp3">
->>>>>>> 8278aeeca2bd2ea5677dd5e47aeef944f6ad5768
       <p>If you are reading this, it is because your browser does not support the audio element.     </p>
     </audio>
 
@@ -37,17 +33,18 @@
           document.getElementById("audio").pause();
           document.getElementById("audio").currentTime = Math.round(((Date.now() / 1000) % document.getElementById("audio").duration) * 100) / 100
           document.getElementById("audio").play();
+          window.setInterval(function(){
+            $("html").css('background-color',randomColor);
+          })
+          AnimateRotate(360);
         }
       }
       // sleep time expects milliseconds
       function sleep (time) {
         return new Promise((resolve) => setTimeout(resolve, time));
       }
-      // Usage!
-      sleep(1000).then(() => {
-        play()
-      });
-      play()
+
+      
     </script>
   </body>
 </html>
