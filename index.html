@@ -54,13 +54,22 @@
         audioTag.onloadedmetadata = function() {
           let duration = Math.floor(audioTag.duration);
           let currentTime = Date.now();
+
+          // time to wait = (current time in seconds + 2 seconds) - current time
+          // We buffer by 2 seconds because buffering by 1 second allows for the possiblility
+          // that the nearest second is 10ms away or a very small.
           let delta = (Math.floor(currentTime / 1000) * 1000) + (2000) - currentTime
+
+          // set the timeout right away instead of setting the play time because we have
+          // at least a second to wait.
           setTimeout(() => {
               audioTag.play();
               startAnimations();
             },
             delta
           );
+
+          // find the absolute time in the future to play a point in the song.
           let playTime = ((currentTime + delta) / 1000) % duration
           audioTag.currentTime = playTime
         }
