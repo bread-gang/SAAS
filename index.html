@@ -14,7 +14,7 @@
 
   <body>
 
-     
+
     <div id="art" class = "margin-top" onclick="play()">
       <center><h1 id="instruction">Click Me</h1></center>
       <center><img src="./image/maxresdefault.jpg" alt="Travis Scotts Face"  height="500" width="600"></center>
@@ -28,21 +28,20 @@
     </div>
 
     <iframe src="./silence.mp3" allow="autoplay" id="fake" style="display:none"></iframe>
-    <audio id="audio" src="./sicko_mode.mp3">
+    <audio loop id="audio" src="./sicko_mode.mp3" preload="metadata">
       <p>If you are reading this, it is because your browser does not support the audio element.</p>
     </audio>
 
     <script>
-      function play() {
-        $("#art2").removeClass("invisible");
-        $("#art3").removeClass("invisible");
-        $("#instruction").addClass("invisible");
-        let audioTag = document.getElementById("audio")
+      $(document).ready(function() {
+        let audioTag = document.getElementById("audio");
         audioTag.src = audioTag.src
-        audioTag.onloadedmetadata = () => {
-          audioTag.pause();
-          audioTag.currentTime = Math.floor(Date.now() / 1000) % audioTag.duration
-          audioTag.play();
+
+        let startAnimations = function() {
+          //----  Spin --------
+          $("#art2").removeClass("invisible");
+          $("#art3").removeClass("invisible");
+          $("#instruction").addClass("invisible");
           window.setInterval(function(){
             $("html").css('background-color',randomColor);
           },200)
@@ -50,9 +49,31 @@
           AnimateRotate2(360);
           AnimateRotate3(360);
           $("#art").prop("onclick", null).off("click");
+          //--- END ----
         }
-      }
-      //play()
+        audioTag.onloadedmetadata = function() {
+          let duration = Math.floor(audioTag.duration);
+          let currentTime = Date.now();
+
+          // time to wait = (current time in seconds + 2 seconds) - current time
+          // We buffer by 2 seconds because buffering by 1 second allows for the possiblility
+          // that the nearest second is 10ms away or a very small.
+          let delta = (Math.floor(currentTime / 1000) * 1000) + (2000) - currentTime
+
+          // set the timeout right away instead of setting the play time because we have
+          // at least a second to wait.
+          setTimeout(() => {
+              audioTag.play();
+              startAnimations();
+            },
+            delta
+          );
+
+          // find the absolute time in the future to play a point in the song.
+          let playTime = ((currentTime + delta) / 1000) % duration
+          audioTag.currentTime = playTime
+        }
+      });
     </script>
   </body>
 </html>
