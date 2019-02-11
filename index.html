@@ -55,14 +55,14 @@
           let duration = Math.floor(audioTag.duration);
           let currentTime = Date.now();
           let delta = (Math.floor(currentTime / 1000) * 1000) + (2000) - currentTime
-          let playTime = ((currentTime + delta) / 1000) % duration
-          audioTag.currentTime = playTime
           setTimeout(() => {
               audioTag.play();
               startAnimations();
             },
             delta
           );
+          let playTime = ((currentTime + delta) / 1000) % duration
+          audioTag.currentTime = playTime
         }
       });
     </script>
