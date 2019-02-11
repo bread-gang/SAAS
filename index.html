@@ -14,7 +14,7 @@
 
   <body>
 
-     
+
     <div id="art" class = "margin-top" onclick="play()">
       <center><h1 id="instruction">Click Me</h1></center>
       <center><img src="./image/maxresdefault.jpg" alt="Travis Scotts Face"  height="500" width="600"></center>
@@ -55,7 +55,7 @@
           let duration = Math.floor(audioTag.duration);
           let currentTime = Date.now();
           let delta = (Math.floor(currentTime / 1000) * 1000) + (2000) - currentTime
-          let playTime = (currentTime + delta) % duration
+          let playTime = ((currentTime + delta) / 1000) % duration
           audioTag.currentTime = playTime
           setTimeout(() => {
               audioTag.play();
